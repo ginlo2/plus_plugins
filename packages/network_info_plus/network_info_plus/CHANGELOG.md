@@ -1,3 +1,20 @@
+## 6.0.2
+
+ - **FIX**(all): Clean up macOS Privacy Manifests ([#3268](https://github.com/fluttercommunity/plus_plugins/issues/3268)). ([d7b98ebd](https://github.com/fluttercommunity/plus_plugins/commit/d7b98ebd7d39b0143931f5cc6e627187576223dc))
+ - **FIX**(all): Add macOS Privacy Manifests ([#3251](https://github.com/fluttercommunity/plus_plugins/issues/3251)). ([bf5dad2a](https://github.com/fluttercommunity/plus_plugins/commit/bf5dad2ad249605055bcbd5f663e42569df12d64))
+
+## 6.0.1
+
+ - **FIX**(network_info_plus): Avoid usage of unsupported package:win32 versions ([#3179](https://github.com/fluttercommunity/plus_plugins/issues/3179)). ([79f61add](https://github.com/fluttercommunity/plus_plugins/commit/79f61add195693f33330103dd5f31f6433dfc1f2))
+
+## 6.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FIX**(network_info_plus): Do not ignore errors on Android ([#3080](https://github.com/fluttercommunity/plus_plugins/issues/3080)). ([5b0cdf4f](https://github.com/fluttercommunity/plus_plugins/commit/5b0cdf4f71a8cc21b245c7defe355ec7b5796cc2))
+ - **REFACTOR**(all): Remove website files, configs, mentions ([#3018](https://github.com/fluttercommunity/plus_plugins/issues/3018)). ([ecc57146](https://github.com/fluttercommunity/plus_plugins/commit/ecc57146aa8c6b1c9c332169d3cc2205bc4a700f))
+ - **FIX**(all): changed homepage url in pubspec.yaml ([#3099](https://github.com/fluttercommunity/plus_plugins/issues/3099)). ([66613656](https://github.com/fluttercommunity/plus_plugins/commit/66613656a85c176ba2ad337e4d4943d1f4171129))
+
 ## 5.0.3
 
  - **REFACTOR**(network_info_plus): Migrate Android example to use the new plugins declaration ([#2768](https://github.com/fluttercommunity/plus_plugins/issues/2768)). ([d7206929](https://github.com/fluttercommunity/plus_plugins/commit/d72069292995355fbe0fe62ec6d74f34005008f6))

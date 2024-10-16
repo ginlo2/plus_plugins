@@ -16,8 +16,8 @@ A Flutter plugin to access various information about the battery of the device t
 
 ## Requirements
 
-- Flutter >=3.3.0
-- Dart >=2.18.0 <4.0.0
+- Flutter >=3.19.0
+- Dart >=3.3.0 <4.0.0
 - iOS >=12.0
 - MacOS >=10.14
 - Android `compileSDK` 34
@@ -54,4 +54,3 @@ print(await battery.isInBatterySaveMode);
 ## Learn more
 
 - [API Documentation](https://pub.dev/documentation/battery_plus/latest/battery_plus/battery_plus-library.html)
-- [Plugin documentation website](https://plus.fluttercommunity.dev/docs/battery_plus/overview)

@@ -1,29 +1,29 @@
-name: Bug Report
-description: You are using one of plugins in some project but due to the plugin the application is crashing or throws an exception, the plugin is buggy, or something looks wrong.
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: Compile Issue
+description: You added a plugin to your project but it does not compile or run anymore.
+title: "[Compile]: "
+labels: ["compile", "triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for using PlusPlugins!
+        Please ensure that you have searched for a solution before opening a new issue.
 
-        If you are looking for support, please check out our documentation
-        or consider asking a question on Stack Overflow:
-        * https://plus.fluttercommunity.dev/docs/overview
+        1. Check in this repostory searching in the Issue tab. Ensure you look at the closed issues too.
+        2. Search on Stack Overflow for similar errors.
+        3. Search on Google or other general purpose search engines.
+        4. Perform a `flutter upgrade`, followed by `flutter pub upgrade` and finally `flutter clean`, then try again.
+        5. Perform a `flutter pub cache repair` to clean install of the packages in your system cache. See [`dart pub cache`](https://dart.dev/tools/pub/cmd/pub-cache) for more info.
+        6. Android compilation issues? Ensure your gradle configuration is up-to-date: https://docs.flutter.dev/release/breaking-changes/flutter-gradle-plugin-apply
 
-        If you have a **compilation issue**, please use the [Compile Issue Template](https://github.com/fluttercommunity/plus_plugins/issues/new?assignees=&labels=compile%2Ctriage&projects=&template=COMPILATION.yaml&title=%5BCompile%5D%3A+).
+        If you can prove that you have done all these steps and still have problems, proceed with the following template.
 
-        If you have found a bug or if our documentation doesn't have an answer
-        to what you're looking for, then fill our the template below.
-     
-        IMPORTANT: Bug reports that don't follow this template will be closed
+        IMPORTANT: Compile reports that don't follow this template will be closed
   - type: input
     id: platform
     attributes:
-      label: Platform
-      description: Platform + Version the Issue occurs on
-      placeholder: ex. Android 12
+      label: Operating System
+      description: Operating system where you are building the app
+      placeholder: ex. Windows 11
     validations:
       required: true
   - type: input
@@ -46,48 +46,46 @@ body:
     id: sdk
     attributes:
       label: Flutter SDK
-      description: Flutter SDK Version
+      description: Flutter SDK Version. Run `flutter --version`.
       placeholder: ex. 3.0.0
     validations:
       required: true
   - type: textarea
-    id: steps
+    id: command
     attributes:
-      label: Steps to reproduce
+      label: Compilation command
       description: |
-        Please tell us exactly how to reproduce the problem you are running into.
+        Please tell us exactly how are you building the project.
 
-        Please attach a small application (ideally just one main.dart file) that
-        reproduces the problem. You could use https://gist.github.com/ for this.
-
-        If the problem is with your application's rendering, then please attach
-        a screenshot and explain what the problem is.
-      placeholder: |
-        1. ...
-        2. ...
-        3. ...
+        e.g. `flutter build apk`
     validations:
       required: true
   - type: textarea
-    id: code
+    id: dependencies
     attributes:
-      label: Code Sample
-      render: dart
+      label: Dart Dependencies
+      render: yaml
       description: |
-        Include a minimal code sample that can be used to reproduce the error.
-        e.g. The call to the plus_plugins method.
+        Include a list of dependencies that your project has.
+        You can copy your `package.yaml` here.
     validations:
       required: false
   - type: textarea
-    id: logs
+    id: native
     attributes:
-      label: Logs
+      label: Native dependencies
+      render: text
+      description: |
+        Include any relevant native dependencies here. e.g. gradle files, cocoa pods, etc.
+    validations:
+      required: false
+  - type: textarea
+    id: error
+    attributes:
+      label: Compilation Error
       render: shell
       description: |
-        Run your application with `flutter run --verbose` and attach **all the
-        log output** below between the lines with the backticks. If there is an
-        exception, please see if the error message includes enough information
-        to explain how to solve the issue.
+        Paste here the compilation error.
     validations:
       required: true
   - type: textarea
@@ -97,6 +95,8 @@ body:
       render: shell
       description: |
         Paste the output of running `flutter doctor -v` here.
+
+        Important -> If it is not provided, we will close the issue.
     validations:
       required: true
   - type: checkboxes

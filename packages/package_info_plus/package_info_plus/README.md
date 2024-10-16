@@ -16,8 +16,8 @@ This Flutter plugin provides an API for querying information about an applicatio
 
 ## Requirements
 
-- Flutter >=3.3.0
-- Dart >=2.18.0 <4.0.0
+- Flutter >=3.19.0
+- Dart >=3.3.0 <4.0.0
 - iOS >=12.0
 - MacOS >=10.14
 - Android `compileSDK` 34
@@ -101,5 +101,4 @@ Ensure that your CORS Firebase configuration allows it.
 ## Learn more
 
 - [API Documentation](https://pub.dev/documentation/package_info_plus/latest/package_info_plus/package_info_plus-library.html)
-- [Plugin documentation website](https://plus.fluttercommunity.dev/docs/package_info_plus/overview/)
 

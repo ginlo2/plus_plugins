@@ -9,10 +9,13 @@ import CoreMotion
 
 let GRAVITY = 9.81
 var _motionManager: CMMotionManager!
+var _altimeter: CMAltimeter!
 
 public protocol MotionStreamHandler: FlutterStreamHandler {
     var samplingPeriod: Int { get set }
 }
+
+let timestampMicroAtBoot = (Date().timeIntervalSince1970 - ProcessInfo.processInfo.systemUptime) * 1000000
 
 func _initMotionManager() {
     if (_motionManager == nil) {
@@ -24,14 +27,21 @@ func _initMotionManager() {
     }
 }
 
-func sendTriplet(x: Float64, y: Float64, z: Float64, sink: @escaping FlutterEventSink) {
+func _initAltimeter() {
+    if (_altimeter == nil) {
+        _altimeter = CMAltimeter()
+    }
+}
+
+func sendFlutter(x: Float64, y: Float64, z: Float64, timestamp: TimeInterval, sink: @escaping FlutterEventSink) {
     if _isCleanUp {
         return
     }
     // Even after [detachFromEngineForRegistrar] some events may still be received
     // and fired until fully detached.
     DispatchQueue.main.async {
-        let triplet = [x, y, z]
+        let timestampSince1970Micro = timestampMicroAtBoot + (timestamp * 1000000)
+        let triplet = [x, y, z, timestampSince1970Micro]
         triplet.withUnsafeBufferPointer { buffer in
             sink(FlutterStandardTypedData.init(float64: Data(buffer: buffer)))
         }
@@ -67,10 +77,11 @@ class FPPAccelerometerStreamHandlerPlus: NSObject, MotionStreamHandler {
             // Multiply by gravity, and adjust sign values to
             // align with Android.
             let acceleration = data!.acceleration
-            sendTriplet(
+            sendFlutter(
                     x: -acceleration.x * GRAVITY,
                     y: -acceleration.y * GRAVITY,
                     z: -acceleration.z * GRAVITY,
+                    timestamp: data!.timestamp,
                     sink: sink
             )
         }
@@ -116,10 +127,11 @@ class FPPUserAccelStreamHandlerPlus: NSObject, MotionStreamHandler {
             // Multiply by gravity, and adjust sign values to
             // align with Android.
             let acceleration = data!.userAcceleration
-            sendTriplet(
+            sendFlutter(
                     x: -acceleration.x * GRAVITY,
                     y: -acceleration.y * GRAVITY,
                     z: -acceleration.z * GRAVITY,
+                    timestamp: data!.timestamp,
                     sink: sink
             )
         }
@@ -163,7 +175,13 @@ class FPPGyroscopeStreamHandlerPlus: NSObject, MotionStreamHandler {
                 return
             }
             let rotationRate = data!.rotationRate
-            sendTriplet(x: rotationRate.x, y: rotationRate.y, z: rotationRate.z, sink: sink)
+            sendFlutter(
+                x: rotationRate.x,
+                y: rotationRate.y,
+                z: rotationRate.z,
+                timestamp: data!.timestamp,
+                sink: sink
+            )
         }
         return nil
     }
@@ -205,13 +223,76 @@ class FPPMagnetometerStreamHandlerPlus: NSObject, MotionStreamHandler {
                 return
             }
             let magneticField = data!.magneticField
-            sendTriplet(x: magneticField.x, y: magneticField.y, z: magneticField.z, sink: sink)
+            sendFlutter(
+                x: magneticField.x,
+                y: magneticField.y,
+                z: magneticField.z,
+                timestamp: data!.timestamp,
+                sink: sink
+            )
         }
         return nil
     }
 
     func onCancel(withArguments arguments: Any?) -> FlutterError? {
         _motionManager.stopDeviceMotionUpdates()
+        return nil
+    }
+
+    func dealloc() {
+        FPPSensorsPlusPlugin._cleanUp()
+    }
+}
+
+class FPPBarometerStreamHandlerPlus: NSObject, MotionStreamHandler {
+
+    var samplingPeriod = 200000 {
+        didSet {
+            _initAltimeter()
+            // Note: CMAltimeter does not provide a way to set the sampling period directly.
+            // The sampling period would typically be managed by starting/stopping the updates.
+        }
+    }
+
+    func onListen(
+            withArguments arguments: Any?,
+            eventSink sink: @escaping FlutterEventSink
+    ) -> FlutterError? {
+        _initAltimeter()
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            _altimeter.startRelativeAltitudeUpdates(to: OperationQueue()) { data, error in
+                if _isCleanUp {
+                    return
+                }
+                if (error != nil) {
+                    sink(FlutterError(
+                            code: "UNAVAILABLE",
+                            message: error!.localizedDescription,
+                            details: nil
+                    ))
+                    return
+                }
+                let pressure = data!.pressure.doubleValue * 10.0 // kPa to hPa (hectopascals)
+                DispatchQueue.main.async {
+                let timestampSince1970Micro = timestampMicroAtBoot + (data!.timestamp * 1000000)
+                let pressureArray: [Double] = [pressure, timestampSince1970Micro]
+                pressureArray.withUnsafeBufferPointer { buffer in
+                    sink(FlutterStandardTypedData.init(float64: Data(buffer: buffer)))
+                    }
+                }
+            }
+        } else {
+            return FlutterError(
+                code: "UNAVAILABLE",
+                message: "Barometer is not available on this device",
+                details: nil
+            )
+        }
+        return nil
+    }
+
+    func onCancel(withArguments arguments: Any?) -> FlutterError? {
+        _altimeter.stopRelativeAltitudeUpdates()
         return nil
     }
 
