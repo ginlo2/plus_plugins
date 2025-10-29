@@ -17,12 +17,12 @@ Dart code in the background when alarms fire.
 
 ## Requirements
 
-- Flutter >=3.3.0
-- Dart >=2.18.0 <4.0.0
-- Android `compileSDK` 34
+- Flutter >=3.12.0
+- Dart >=3.1.0 <4.0.0
 - Java 17
-- Android Gradle Plugin >=8.3.0
-- Gradle wrapper >=8.4
+- Kotlin 2.2.0
+- Android Gradle Plugin >=8.12.1
+- Gradle wrapper >=8.13
 
 ## Getting Started
 
@@ -113,6 +113,8 @@ This intent has the action `android.intent.action.MAIN` and includes the followi
 Setting the alarm:
 
 ```dart
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+
 await AndroidAlarmManager.oneShotAt(
     time,
     id,

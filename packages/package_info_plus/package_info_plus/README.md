@@ -10,7 +10,7 @@ This Flutter plugin provides an API for querying information about an applicatio
 
 ## Platform Support
 
-| Android |  iOS  | MacOS |  Web  | Linux | Windows |
+| Android |  iOS  | macOS |  Web  | Linux | Windows |
 | :-----: | :---: | :---: | :---: | :---: | :-----: |
 |✅|✅|✅|✅|✅|✅|
 
@@ -19,11 +19,11 @@ This Flutter plugin provides an API for querying information about an applicatio
 - Flutter >=3.19.0
 - Dart >=3.3.0 <4.0.0
 - iOS >=12.0
-- MacOS >=10.14
-- Android `compileSDK` 34
+- macOS >=10.14
 - Java 17
-- Android Gradle Plugin >=8.3.0
-- Gradle wrapper >=8.4
+- Kotlin 2.2.0
+- Android Gradle Plugin >=8.12.1
+- Gradle wrapper >=8.13
 
 ## Usage
 
@@ -55,7 +55,7 @@ String buildNumber = packageInfo.buildNumber;
 #### Plugin returns incorrect app version
 
 Flutter build tools allow only digits and `.` (dot) symbols to be used in `version`
-of `pubspec.yaml` on iOS/MacOS to comply with official version format from Apple.
+of `pubspec.yaml` on iOS/macOS to comply with official version format from Apple.
 
 More info available in [this comment](https://github.com/fluttercommunity/plus_plugins/issues/389#issuecomment-1106764429)
 
@@ -76,7 +76,7 @@ See https://github.com/fluttercommunity/plus_plugins/issues/309
 #### I see wrong version on Windows platform
 
 There was an [issue](https://github.com/flutter/flutter/issues/73652) in Flutter, which is already resolved since Flutter 3.3.
-If your project was created before Flutter 3.3 you need to migrate the project according to [this guide] (https://docs.flutter.dev/release/breaking-changes/windows-version-information) first to get correct version with `package_info_plus`
+If your project was created before Flutter 3.3 you need to migrate the project according to [this guide](https://docs.flutter.dev/release/breaking-changes/windows-version-information) first to get correct version with `package_info_plus`
 
 ### Web
 

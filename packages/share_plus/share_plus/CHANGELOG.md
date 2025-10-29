@@ -1,3 +1,58 @@
+## 12.0.1
+
+ - **FIX**(share_plus): Avoid crash on iOS 26 on iPhones with no sharePositionOrigin param([#3699](https://github.com/fluttercommunity/plus_plugins/issues/3699)). ([42b079bd](https://github.com/fluttercommunity/plus_plugins/commit/42b079bd5fa56c9983a5a4fcf351190884f5c540))
+
+## 12.0.0
+
+> Note: This release has breaking changes.
+>
+> On Android plugin now requires the following:
+> - Android Gradle Plugin >=8.12.1
+> - Gradle wrapper >=8.13
+> - Kotlin 2.2.0
+
+ - **FIX**(share_plus): unable to get the correct result on iOS ([#3660](https://github.com/fluttercommunity/plus_plugins/issues/3660)). ([3bd253b0](https://github.com/fluttercommunity/plus_plugins/commit/3bd253b04021a932fa79412a5da2318c22cfdbe2))
+ - **DOCS**(all): replace MacOS by macOS in package READMEs ([#3658](https://github.com/fluttercommunity/plus_plugins/issues/3658)). ([72b6234c](https://github.com/fluttercommunity/plus_plugins/commit/72b6234c25315c30d8efc9f15a9258b0bb7273a8))
+ - **BREAKING** **FEAT**(share_plus): Change Android compile SDK, update Android build config ([#3671](https://github.com/fluttercommunity/plus_plugins/issues/3671)). ([24363e27](https://github.com/fluttercommunity/plus_plugins/commit/24363e270d3c8219b9516fe57474a448f6c5fd48))
+
+## 11.1.0
+
+ - **FEAT**(share_plus): Added `excludedCupertinoActivities` share parameter ([#3376](https://github.com/fluttercommunity/plus_plugins/issues/3376)). ([f9fdadb4](https://github.com/fluttercommunity/plus_plugins/commit/f9fdadb41242ad2e36ddbf1ade82be6c5bb78ec4))
+ - **DOCS**(all): improve documentation across multiple README files ([#3630](https://github.com/fluttercommunity/plus_plugins/issues/3630)). ([643e12df](https://github.com/fluttercommunity/plus_plugins/commit/643e12dfe0389dc21b49bd31ec03e7f38844d339))
+ - **DOCS**(share-plus): Update README.md. ([2aa9f7e0](https://github.com/fluttercommunity/plus_plugins/commit/2aa9f7e0c7b471dc581d6fbd334633d16eb2da03))
+
+## 11.0.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **FEAT**(share_plus): SharePlus refactor ([#3404](https://github.com/fluttercommunity/plus_plugins/issues/3404)). ([0a19d460](https://github.com/fluttercommunity/plus_plugins/commit/0a19d46010b6ecf5c2f10771e33a39823f7c30b7))
+
+This version introduces the new `SharePlus` class with the `share(params)` method.
+It replaces the old `Share` class, which has been deprecated but can still be used.
+Check the section "Migrating from `Share` to `SharePlus`" in the `README.md`.
+
+## 10.1.4
+
+ - **FIX**(share_plus): fallback for shareXFiles() to use download on web ([#3388](https://github.com/fluttercommunity/plus_plugins/issues/3388)). ([95a12ee3](https://github.com/fluttercommunity/plus_plugins/commit/95a12ee3982dd61de5d07005de62f81c2e99eb08))
+
+## 10.1.3
+
+ - **REFACTOR**(all): Use range of flutter_lints for broader compatibility ([#3371](https://github.com/fluttercommunity/plus_plugins/issues/3371)). ([8a303add](https://github.com/fluttercommunity/plus_plugins/commit/8a303add3dee1acb8bac5838246490ed8a0fe408))
+ - **FIX**(share_plus): A function declaration without a prototype is deprecated in all versions of C ([#3375](https://github.com/fluttercommunity/plus_plugins/issues/3375)). ([40f9c421](https://github.com/fluttercommunity/plus_plugins/commit/40f9c42138bf1c80e6283f46e12109a0e66c0816))
+ - **FIX**(share_plus): Set correct Flutter and Dart versions requirements ([#3363](https://github.com/fluttercommunity/plus_plugins/issues/3363)). ([65616668](https://github.com/fluttercommunity/plus_plugins/commit/6561666885f547725f6e88ebaae498832b53efed))
+
+## 10.1.2
+
+ - **FIX**(share_plus): Update privacy manifest path ([#3349](https://github.com/fluttercommunity/plus_plugins/issues/3349)). ([d884a991](https://github.com/fluttercommunity/plus_plugins/commit/d884a9917769e11daa66c1aaa3ebd0d015506e77))
+
+## 10.1.1
+
+ - **FIX**(share_plus): [#3322](https://github.com/fluttercommunity/plus_plugins/issues/3322) Downscale previews on iOS to avoid issues with huge images ([#3320](https://github.com/fluttercommunity/plus_plugins/issues/3320)). ([d8c95c2c](https://github.com/fluttercommunity/plus_plugins/commit/d8c95c2cffaf882cf0670cc5daf889eebd249a77))
+
+## 10.1.0
+
+ - **FEAT**(share_plus): Add Swift Package Manager support ([#3169](https://github.com/fluttercommunity/plus_plugins/issues/3169)). ([b3970225](https://github.com/fluttercommunity/plus_plugins/commit/b3970225b80183548ecc5516a5c1a1ad61016860))
+
 ## 10.0.3
 
  - **FIX**(share_plus): `mime` compatible with v2 (v1 still supported) ([#3309](https://github.com/fluttercommunity/plus_plugins/issues/3309)). ([401db75e](https://github.com/fluttercommunity/plus_plugins/commit/401db75efa24c40fd96a05e79d12801f92666efd))

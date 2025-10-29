@@ -28,9 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: |
           ./.github/workflows/scripts/install-tools.sh
@@ -49,9 +48,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
 
@@ -69,9 +67,8 @@ jobs:
 
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
 
@@ -93,9 +90,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Build Example"
@@ -106,15 +102,14 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Bootstrap Workspace"
         run: melos bootstrap --scope="$PLUGIN_SCOPE"
       - name: "Start Simulator"
-        uses: futureware-tech/simulator-action@v3
+        uses: futureware-tech/simulator-action@v4
         with:
           model: 'iPhone 15'
       - name: "Run Integration Test"
@@ -125,9 +120,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Build Example"
@@ -138,9 +132,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Bootstrap Workspace"
@@ -153,9 +146,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Build Example"
@@ -166,9 +158,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Bootstrap Workspace"
@@ -183,9 +174,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Build Example"
@@ -196,9 +186,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Bootstrap Workspace"
@@ -211,9 +200,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v4
-      - name: "Install Flutter"
-        run: ./.github/workflows/scripts/install-flutter.sh stable
+        uses: actions/checkout@v5
+      - uses: flutter-actions/setup-flutter@v4
       - name: "Install Tools"
         run: ./.github/workflows/scripts/install-tools.sh
       - name: "Build Example"
